@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class Teleporter : MonoBehaviour
 {
-
+    public PlayerController playerController;
     public Transform player;
     public Transform reciever;
+    public string recieverName;
 
     private bool playerIsOverlapping = false;
+    private bool IsTrigger;
 
     // Start is called before the first frame update
     void Start()
@@ -38,8 +40,9 @@ public class Teleporter : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Player")
+        if (other.tag == "Player" && playerController.lastTeleportName != recieverName)
         {
+            playerController.lastTeleportName = gameObject.name;
             playerIsOverlapping = true;
         }
     }
@@ -48,7 +51,7 @@ public class Teleporter : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            playerIsOverlapping = false;
+           playerIsOverlapping = false;
         }
     }
 }

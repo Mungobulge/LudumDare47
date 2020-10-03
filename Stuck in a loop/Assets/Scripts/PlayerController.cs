@@ -8,9 +8,11 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D rb2D;
 
+    public string lastTeleportName;
+
     void Start()
     {
         rb2D = gameObject.GetComponent<Rigidbody2D>();
-        rb2D.AddForce(transform.right * thrust);
+        rb2D.AddForce(transform.up * thrust);
     }
 }
