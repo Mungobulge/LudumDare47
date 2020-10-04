@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -23,13 +24,20 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.LeftShift) && isPowerUp)
         {
+            isPowerUp = false;
             rb2D.AddForce(transform.up * burst, ForceMode2D.Impulse);
         }
 
         if (Input.GetKeyDown(KeyCode.Space) && isAsteroid)
         {
+            isAsteroid = false;
             var obj = Instantiate(prefabSpawn, spawnLocation.transform.position, Quaternion.Euler(0, 0, 0));
             StartCoroutine(ActiveAttractor(obj));
+        }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 
