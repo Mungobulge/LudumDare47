@@ -386,7 +386,7 @@ PrefabInstance:
     - target: {fileID: 3108542364034416616, guid: 95f07b75f82a28447889bfb7cd442749,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3108542364034416616, guid: 95f07b75f82a28447889bfb7cd442749,
         type: 3}
@@ -1073,7 +1073,7 @@ PrefabInstance:
     - target: {fileID: 2801890064357201968, guid: ee416aadcf3480a409179d5de6a05cb8,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2801890064357201968, guid: ee416aadcf3480a409179d5de6a05cb8,
         type: 3}
@@ -1090,35 +1090,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2801890064357201968, guid: ee416aadcf3480a409179d5de6a05cb8,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 2801890064357201968, guid: ee416aadcf3480a409179d5de6a05cb8,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 2801890064357201968, guid: ee416aadcf3480a409179d5de6a05cb8,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 2801890064357201969, guid: ee416aadcf3480a409179d5de6a05cb8,
-        type: 3}
-      propertyPath: thrust
-      value: 200
-      objectReference: {fileID: 0}
     - target: {fileID: 2801890064357201980, guid: ee416aadcf3480a409179d5de6a05cb8,
         type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 2801890064357201982, guid: ee416aadcf3480a409179d5de6a05cb8,
-        type: 3}
-      propertyPath: m_Simulated
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee416aadcf3480a409179d5de6a05cb8, type: 3}
@@ -1555,7 +1530,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1827267461
 GameObject:
