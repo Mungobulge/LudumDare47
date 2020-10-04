@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public bool isPowerUp = false;
+    public bool isAsteroid = false;
     public float thrust = 1.0f;
     public float burst = 1.0f;
     public Transform spawnLocation;
@@ -17,15 +19,16 @@ public class PlayerController : MonoBehaviour
     {
         rb2D = gameObject.GetComponent<Rigidbody2D>();
         rb2D.AddForce(transform.right * thrust);
+        rb2D.AddTorque(-0.05f, ForceMode2D.Impulse);
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.LeftShift) && isPowerUp)
         {
             rb2D.AddForce(transform.up * burst, ForceMode2D.Impulse);
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && isAsteroid)
         {
             var obj = Instantiate(prefabSpawn, spawnLocation.transform.position, Quaternion.Euler(0, 0, 0));
             StartCoroutine(ActiveAttractor(obj));
