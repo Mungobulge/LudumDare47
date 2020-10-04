@@ -4,54 +4,42 @@ using UnityEngine;
 
 public class Teleporter : MonoBehaviour
 {
-    public PlayerController playerController;
     public Transform player;
     public Transform reciever;
     public string recieverName;
 
-    private bool playerIsOverlapping = false;
-    private bool IsTrigger;
-
-    // Start is called before the first frame update
-    void Start()
+    private void Teleport(Transform transformObj)
     {
-        
-    }
+        Vector3 portalToPlayer = transformObj.position - transform.position;
+        float dotProduct = Vector3.Dot(transform.up, portalToPlayer);
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (playerIsOverlapping)
-        {
-            Vector3 portalToPlayer = player.position - transform.position;
-            float dotProduct = Vector3.Dot(transform.up, portalToPlayer);
+        float rotationDiff = -Quaternion.Angle(transform.rotation, reciever.rotation);
+        rotationDiff += 360;
+        transformObj.Rotate(Vector3.up, rotationDiff);
 
-
-            float rotationDiff = -Quaternion.Angle(transform.rotation, reciever.rotation);
-            rotationDiff += 360;
-            player.Rotate(Vector3.up, rotationDiff);
-
-            Vector3 positionOffset = Quaternion.Euler(0f, rotationDiff, 0f) * portalToPlayer;
-            player.position = reciever.position + positionOffset;
-
-            playerIsOverlapping = false;
-        }
+        Vector3 positionOffset = Quaternion.Euler(0f, rotationDiff, 0f) * portalToPlayer;
+        transformObj.position = reciever.position + positionOffset;
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Player" && playerController.lastTeleportName != recieverName)
+        if (!ValidTag(other.tag))
         {
-            playerController.lastTeleportName = gameObject.name;
-            playerIsOverlapping = true;
+            return;
+        }
+
+        var teleportPassanger = other.GetComponent<TeleporterPassanger>();
+
+        if (teleportPassanger != null && teleportPassanger.lastTeleportName != recieverName)
+        {
+            teleportPassanger.RefreshPartcileSystem();
+            teleportPassanger.lastTeleportName = gameObject.name;
+            Teleport(teleportPassanger.transform);
         }
     }
 
-    void OnTriggerExit2D(Collider2D other)
+    bool ValidTag(string tag)
     {
-        if (other.tag == "Player")
-        {
-           playerIsOverlapping = false;
-        }
+        return tag == "Player" || tag == "Asteroid";
     }
 }

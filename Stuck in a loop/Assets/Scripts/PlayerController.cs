@@ -13,8 +13,6 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D rb2D;
 
-    public string lastTeleportName;
-
     void Start()
     {
         rb2D = gameObject.GetComponent<Rigidbody2D>();
